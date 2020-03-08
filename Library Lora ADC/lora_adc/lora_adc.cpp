@@ -35,14 +35,14 @@ void lora_adc::begin(byte pinRST, unsigned int baud){
 
 String lora_adc::_data(){
     String _Data;
-    tunggu_data(2000);
+    tunggu_data(500);
     _Data = str_data;
     return _Data;
 } 
 
 bool lora_adc::getADC(){
     bool _sts;
-    tunggu_data(2000);
+    tunggu_data(500);
     parsing_str();
 
     if(sts == "1"){
