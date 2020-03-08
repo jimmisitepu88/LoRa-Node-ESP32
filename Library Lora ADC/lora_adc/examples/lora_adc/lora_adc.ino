@@ -1,6 +1,6 @@
 #include<lora_adc.h>
 
-lora_adc lora(25, 4800);
+lora_adc lora;
 String txt; 
 int ADC0,ADC1,ADC2, ADC3;
 int ADC4,ADC5,ADC6, ADC7;
@@ -8,6 +8,7 @@ int ADC4,ADC5,ADC6, ADC7;
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);
+  lora.begin();
   
 }
 
