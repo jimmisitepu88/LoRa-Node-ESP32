@@ -21,16 +21,10 @@ void tunggu_data(unsigned long _wkt);
 void parsing_str();
 char _bufDT[45];
 
-lora_adc::lora_adc(byte pinRST, unsigned int baud){
-    begin(pinRST,baud);
-}
-
-void lora_adc::begin(byte pinRST, unsigned int baud){
-    RST = pinRST;
-    BAUD = baud;
-    Serial1.begin(BAUD, SERIAL_8N1, RXD1, TXD1);
-    pinMode(RST, OUTPUT);
-    digitalWrite(RST, HIGH);
+void lora_adc::begin(){
+    Serial1.begin(4800, SERIAL_8N1, RXD1, TXD1);
+    pinMode(pinRST, OUTPUT);
+    digitalWrite(pinRST, HIGH);
 }
 
 String lora_adc::_data(){
@@ -104,8 +98,8 @@ int lora_adc::adc7(){
 
 void tunggu_data(unsigned long _wkt){
     int i=0;
-    digitalWrite(25, LOW); delay(500);
-    digitalWrite(25, HIGH);
+    digitalWrite(pinRST, LOW); delay(500);
+    digitalWrite(pinRST, HIGH);
     curTime = millis();
     oldTime = curTime;
     while(curTime-oldTime<_wkt){
